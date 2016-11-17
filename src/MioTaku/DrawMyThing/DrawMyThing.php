@@ -5,7 +5,7 @@ namespace MioTaku\DrawMyThing;
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\PluginTask;
 use pocketmine\event\Listener;
-
+use pocketmine\event\entity\EntityLevelChangeEvent;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\tile\Sign;
 use pocketmine\command\CommandSender;
@@ -165,7 +165,32 @@ class DrawMyThing extends PluginBase implements Listener {
             return true;
         }
     }
-	
+	public function onTeleport(EntityLevelChangeEvent $event){
+	$level=$event->getTarget()->getFolderName();	
+		if(file_exist($this->getDataFolder() . "/arenas/" . $level . ".yml")){
+			
+			$this->arena = new Config($this->getDataFolder() . "/arenas/" . $level . ".yml", Config::YAML);
+						$playersin = 0;
+						$allplayers = $this->getServer()->getOnlinePlayers();
+						foreach($allplayers as $inp)
+						{
+							if($inp->getLevel()->getFolderName()==$level)
+							{
+								$playersin++;
+							}
+						}
+						$playersin++;
+						//$pos = new Vector3($this->arena->get($playersin . "X"),$this->arena->get($playersin . "Y"),$this->arena->get($playersin . "Z"));
+						
+						//$player->teleport(new Position($this->arena->get($playersin . "X"),$this->arena->get($playersin . "Y"),$this->arena->get($playersin . "Z"),$level));
+						$this->arena->set($playersin . "Points", 0);
+						$this->arena->set($playersin . "HasGuessed", false);
+						$this->arena->set($playersin . "Name", $sender->getName());
+						$this->arena->save();
+			
+		}
+
+	}
 	public function onInteract(PlayerInteractEvent $event) {
 		$player = $event->getPlayer();
 		
