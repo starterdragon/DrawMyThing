@@ -1,6 +1,6 @@
 <?php
 
-namespace ThePixelGamer\DrawMyThing;
+namespace MioTaku\DrawMyThing;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\PluginTask;
