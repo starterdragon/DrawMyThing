@@ -167,7 +167,7 @@ class DrawMyThing extends PluginBase implements Listener {
     }
 	public function onTeleport(EntityLevelChangeEvent $event){
 	$level=$event->getTarget()->getFolderName();	
-		if(file_exist($this->getDataFolder() . "/arenas/" . $level . ".yml")){
+		if(file_exists($this->getDataFolder() . "/arenas/" . $level . ".yml")){
 			
 			$this->arena = new Config($this->getDataFolder() . "/arenas/" . $level . ".yml", Config::YAML);
 						$playersin = 0;
