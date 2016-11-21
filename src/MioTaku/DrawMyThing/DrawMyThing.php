@@ -119,8 +119,8 @@ class DrawMyThing extends PluginBase implements Listener {
             case "dmt":
 				if($args[0]=="spawn")
 				{
-					$spawn = $this->getServer()->getLevelByName("BladePVP")->getSafeSpawn();
-					$this->getServer()->getLevelByName("BladePVP")->loadChunk($spawn->getX(), $spawn->getZ());
+					$spawn = $this->getServer()->getDefaultLevel()->getSafeSpawn();
+					$this->getServer()->getDefaultLevel->loadChunk($spawn->getX(), $spawn->getZ());
 					$sender->teleport($spawn,0,0);
 				}
 			
@@ -697,8 +697,8 @@ class GameSender extends PluginTask {
 									$player->sendMessage(TextFormat::RED . TextFormat::BOLD . "The winner is " . TextFormat::WHITE . $first . "!");
 									$player->sendMessage(TextFormat::GREEN . "|");
 									$player->sendMessage(TextFormat::GREEN . TextFormat::BOLD . "=======================");
-									$spawn = $this->plugin->getServer()->getLevelByName("BladePVP")->getSafeSpawn();
-									$this->plugin->getServer()->getLevelByName("BladePVP")->loadChunk($spawn->getX(), $spawn->getZ());
+									$spawn = $this->plugin->getServer()->getDefaultLevel()->getSafeSpawn();
+									$this->plugin->getServer()->getDefaultLevel()->loadChunk($spawn->getX(), $spawn->getZ());
 									$player->teleport($spawn,0,0);
 									$this->arena->set("buildtime",0);
 									$this->arena->set("time",45);
@@ -811,7 +811,7 @@ class RefreshSigns extends PluginTask {
 	public function onRun($tick)
 	{
 		$allplayers = $this->plugin->getServer()->getOnlinePlayers();
-		$level = $this->plugin->getServer()->getLevelByName("BladePVP");
+		$level = $this->plugin->getServer()->getDefaultLevel();
 		$tiles = $level->getTiles();
 		foreach($tiles as $t) {
 			if($t instanceof Sign) {	
