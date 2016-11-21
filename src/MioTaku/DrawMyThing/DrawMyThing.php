@@ -120,7 +120,7 @@ class DrawMyThing extends PluginBase implements Listener {
 				if($args[0]=="spawn")
 				{
 					$spawn = $this->getServer()->getDefaultLevel()->getSafeSpawn();
-					$this->getServer()->getDefaultLevel->loadChunk($spawn->getX(), $spawn->getZ());
+					$this->getServer()->getDefaultLevel()->loadChunk($spawn->getX(), $spawn->getZ());
 					$sender->teleport($spawn,0,0);
 				}
 			
