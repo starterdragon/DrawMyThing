@@ -595,8 +595,8 @@ class GameSender extends PluginTask {
 									$player->sendMessage(TextFormat::RED . TextFormat::BOLD . "You are the winner!");
 									$player->sendMessage(TextFormat::GREEN . "|");
 									$player->sendMessage(TextFormat::GREEN . TextFormat::BOLD . "=======================");
-									$spawn = $this->plugin->getServer()->getLevelByName("HUB")->getSafeSpawn();
-									$this->plugin->getServer()->getLevelByName("HUB")->loadChunk($spawn->getX(), $spawn->getZ());
+									$spawn = $this->plugin->getServer()->getDefaultLevel()->getSafeSpawn();
+									$this->plugin->getServer()->getDefaultLevel()->loadChunk($spawn->getX(), $spawn->getZ());
 									$player->teleport($spawn,0,0);
 							}
 						}
