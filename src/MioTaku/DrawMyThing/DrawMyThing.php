@@ -165,7 +165,7 @@ class DrawMyThing extends PluginBase implements Listener {
             return true;
         }
     }
-	public function onTeleport(EntityLevelChangeEvent $event){
+/*	public function onTeleport(EntityLevelChangeEvent $event){
 	$level=$event->getTarget()->getFolderName();	
 		if(file_exists($this->getDataFolder() . "/arenas/" . $level . ".yml")){
 			
@@ -190,7 +190,7 @@ class DrawMyThing extends PluginBase implements Listener {
 			
 		}
 
-	}
+	} */
 	public function onInteract(PlayerInteractEvent $event) {
 		$player = $event->getPlayer();
 		
